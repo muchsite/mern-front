@@ -5,10 +5,11 @@ import { Link, useSearchParams } from "react-router-dom";
 import { UseEcomCon } from "../context";
 
 function Category() {
-  const { selectedText, setselectedText, params, setParams } = UseEcomCon();
+  const { selectedText, setselectedText, params, setParams, url } =
+    UseEcomCon();
 
   const { data, isLoading } = useQuery(["category", selectedText], () => {
-    return axios.get(`/user/category/id/?${params}`);
+    return axios.get(`${url}/user/category/id/?${params}`);
   });
   const res = data?.data;
   return (

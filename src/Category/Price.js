@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { UseEcomCon } from "../context";
 
 function Price() {
-  const { to, from } = UseEcomCon();
+  const { to, from, url } = UseEcomCon();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -13,19 +13,17 @@ function Price() {
       setIsLoading(true);
       try {
         if (to && from) {
-          const res = await axios.get(`/user/price/id/?from=${from}&to=${to}`);
+          const res = await axios.get(
+            `${url}/user/price/id/?from=${from}&to=${to}`
+          );
           setData(res.data);
         }
         if (!to && from) {
-          const res = await axios.get(
-            `http://localhost:4000/user/price/id/?from=${from}`
-          );
+          const res = await axios.get(`${url}/user/price/id/?from=${from}`);
           setData(res.data);
         }
         if (to && !from) {
-          const res = await axios.get(
-            `http://localhost:4000/user/price/id/?to=${to}`
-          );
+          const res = await axios.get(`${url}/user/price/id/?to=${to}`);
           setData(res.data);
         }
         setIsLoading(false);

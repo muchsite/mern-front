@@ -7,19 +7,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { UseEcomCon } from "../context";
 function Single() {
-  const { cardAmount, setCardAmount, userId } = UseEcomCon();
+  const { cardAmount, setCardAmount, userId, url } = UseEcomCon();
   const navigation = useNavigate();
 
   const id = useLocation().state.id;
   const { data, isLoading } = useQuery("single", () => {
-    return axios.get(`/user/${id}`);
+    return axios.get(`${url}/user/${id}`);
   });
   const res = data?.data;
   const { data: cardData, isLoading: isLoadingCard } = useQuery(
     ["card", userId],
     () => {
       return axios.post(
-        "/card/getcard",
+        `${url}/card/getcard`,
         { id: userId },
         {
           headers: {
@@ -56,7 +56,7 @@ function Single() {
         };
         try {
           const response = await axios.post(
-            "/card/additem",
+            `${url}/card/additem`,
             {
               id: userId,
               newProduct: newProduct,

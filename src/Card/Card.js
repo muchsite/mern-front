@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 
 function Card() {
-  const { userId } = UseEcomCon();
+  const { userId, url } = UseEcomCon();
   const [stateData, setStateData] = useState([]);
   const [isLoading2, setIsLoading2] = useState(true);
 
@@ -16,7 +16,7 @@ function Card() {
       setIsLoading2(true);
       try {
         const data = await axios.post(
-          "/card/getcard",
+          `${url}/card/getcard`,
           {
             id: userId,
           },
@@ -36,7 +36,7 @@ function Card() {
   }, []);
   const { data, isLoading } = useQuery(["card", userId], () => {
     return axios.post(
-      "/card/getcard",
+      `${url}/card/getcard`,
       { id: userId },
       {
         headers: {
@@ -59,7 +59,7 @@ function Card() {
     );
     try {
       const res = await axios.post(
-        "/card/addamount",
+        `${url}/card/addamount`,
         {
           title,
           amount: amount1 + 1,
@@ -79,7 +79,7 @@ function Card() {
     if (amount1 < 2) {
       try {
         const res = await axios.post(
-          "/card/delete",
+          `${url}/card/delete`,
           {
             title,
             createdBy: userId,
@@ -106,7 +106,7 @@ function Card() {
     );
     try {
       const res = await axios.post(
-        "/card/addamount",
+        `${url}/card/addamount`,
         {
           title,
           amount: amount1 - 1,
@@ -125,7 +125,7 @@ function Card() {
   const deleteItemCard = async (title) => {
     try {
       const res = await axios.post(
-        "/card/delete",
+        `${url}/card/delete`,
         {
           title,
           createdBy: userId,

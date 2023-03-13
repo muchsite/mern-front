@@ -21,12 +21,13 @@ export const EcomConProvider = ({ children }) => {
   const [selectedText, setselectedText] = useState(params.get("category"));
   const [from, setFrom] = useState(params.get("from"));
   const [to, setTo] = useState(params.get("to"));
-
+  const url = process.env.REACT_APP_BACK_URL;
+  // console.log(url);
   const { data: cardRes, isLoading: isLoadingCard } = useQuery(
     ["card", userId],
     () => {
       return axios.post(
-        "/card/getcard",
+        `${url}/card/getcard`,
         {
           id: userId,
         },
@@ -43,7 +44,7 @@ export const EcomConProvider = ({ children }) => {
   const handleLogIn = async (e) => {
     e.preventDefault();
     try {
-      const data = await axios.post("/login/user", {
+      const data = await axios.post(`${url}/login/user`, {
         email: logEmail,
         password: logPassword,
       });
@@ -89,6 +90,7 @@ export const EcomConProvider = ({ children }) => {
         setFrom,
         to,
         setTo,
+        url,
       }}
     >
       {children}

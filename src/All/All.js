@@ -2,10 +2,12 @@ import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import { UseEcomCon } from "../context";
 import "./all.scss";
 function All() {
+  const { url } = UseEcomCon();
   const { data, isLoading } = useQuery("all", () => {
-    return axios.get("/user/");
+    return axios.get(`${url}/user/`);
   });
   let res = data?.data.data;
   console.log(res);

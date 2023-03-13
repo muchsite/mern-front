@@ -6,8 +6,9 @@ import { UseEcomCon } from "../context";
 import { useQuery } from "react-query";
 import baner from "../asets/baner.png";
 function Home() {
+  const { url } = UseEcomCon();
   const { data, isLoading } = useQuery("data", () => {
-    return axios.get("/user/");
+    return axios.get(`${url}/user/`);
   });
   const navigation = useNavigate();
   return (

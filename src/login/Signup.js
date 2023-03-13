@@ -5,7 +5,7 @@ import { UseEcomCon } from "../context";
 import "./login.scss";
 function Signup() {
   const navigation = useNavigate();
-  const { setUserEmail, setUserId } = UseEcomCon();
+  const { setUserEmail, setUserId, url } = UseEcomCon();
   const [signEmail, setSignEmail] = useState();
   const [signPassword, setPassword] = useState();
   const [signPassword2, setPassword2] = useState();
@@ -13,7 +13,7 @@ function Signup() {
   const handleSign = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/signup/user", {
+      const res = await axios.post(`${url}/signup/user`, {
         email: signEmail,
         password: signPassword,
         password2: signPassword2,
