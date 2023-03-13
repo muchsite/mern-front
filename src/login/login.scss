@@ -1,0 +1,86 @@
+@use "../scss/vars.scss" as *;
+
+.login_cont {
+  display: grid;
+  justify-content: center;
+  form {
+    margin-bottom: 1rem;
+  }
+  button {
+    background-color: rgb(209, 82, 18);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    @include breack_down(large) {
+      font-size: 0.7rem;
+      padding: 0.5rem 1rem;
+    }
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+.input_div {
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  input {
+    margin-left: 1rem;
+    font-size: 2rem;
+    padding: 0.5rem;
+    width: 30rem;
+    @include breack_down(large) {
+      font-size: 1rem;
+      padding: 0.5rem;
+      width: 15rem;
+    }
+  }
+  label {
+    font-size: 2rem;
+    @include breack_down(large) {
+      font-size: 1rem;
+    }
+  }
+}
+.error_fild {
+  border: 1px solid red;
+}
+.error_message {
+  margin-bottom: 2rem;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.sign_cont {
+  // width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    background-color: rgb(209, 82, 18);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  .inp_border {
+    border: red 2px solid;
+  }
+  .sign_BTN {
+    display: flex;
+    align-items: center;
+    p {
+      margin-left: 5rem;
+    }
+  }
+}

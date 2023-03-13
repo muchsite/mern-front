@@ -1,0 +1,49 @@
+@use "../scss/vars.scss" as *;
+.all_cont {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  @include breack_down(large) {
+    grid-template-columns: 1fr 1fr;
+  }
+  gap: 20px;
+  padding: 10px;
+}
+a {
+  text-decoration: none;
+  color: $logo;
+  margin-bottom: 1rem;
+}
+.all_item {
+  border-radius: 15px;
+  background-color: rgb(229, 229, 229);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &:hover {
+  }
+  img {
+    height: 200px;
+    width: 200px;
+    @include breack_down(large) {
+      height: 100px;
+      width: 100px;
+    }
+  }
+  .item_text {
+    margin-bottom: 3rem;
+
+    h1 {
+      margin-bottom: 2rem;
+      @include breack_down(large) {
+        font-size: 1.5rem;
+      }
+    }
+    h3 {
+      margin-bottom: 1rem;
+      @include breack_down(large) {
+        font-size: 1rem;
+      }
+    }
+  }
+}
