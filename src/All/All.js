@@ -10,7 +10,6 @@ function All() {
     return axios.get(`${url}/user/`);
   });
   let res = data?.data.data;
-  console.log(res);
   return (
     <>
       {isLoading ? (

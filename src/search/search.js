@@ -9,7 +9,6 @@ function Search() {
   const data = useQuery("search", () => {
     return axios.get(`${url}/user/name/${searchText}`);
   });
-  console.log(data.data);
   return <div>{searchText}</div>;
 }
 

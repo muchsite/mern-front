@@ -22,7 +22,7 @@ export const EcomConProvider = ({ children }) => {
   const [from, setFrom] = useState(params.get("from"));
   const [to, setTo] = useState(params.get("to"));
   const url = process.env.REACT_APP_BACK_URL;
-  // console.log(url);
+
   const { data: cardRes, isLoading: isLoadingCard } = useQuery(
     ["card", userId],
     () => {
